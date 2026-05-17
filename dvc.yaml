@@ -1,0 +1,15 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - data/raw
+    - src/preprocess.py
+    outs:
+    - data/processed
+  corrupt:
+    cmd: python src/corrupt_data.py
+    deps:
+    - data/processed
+    - src/corrupt_data.py
+    outs:
+    - data/corrupted

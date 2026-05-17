@@ -1,0 +1,38 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: d09d36bf4e7b22ba2b00c892fbfd6aac.dir
+      size: 105058550
+      nfiles: 2
+    - path: src/preprocess.py
+      hash: md5
+      md5: 669fd61225ef901e1e572c9cd69b1628
+      size: 556
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: d6044fef0750ee8169fe88f88157e6e9.dir
+      size: 278831523
+      nfiles: 2
+  corrupt:
+    cmd: python src/corrupt_data.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: d6044fef0750ee8169fe88f88157e6e9.dir
+      size: 278831523
+      nfiles: 2
+    - path: src/corrupt_data.py
+      hash: md5
+      md5: 9a15534a108cdfca0ab0d5896b7065f1
+      size: 528
+    outs:
+    - path: data/corrupted
+      hash: md5
+      md5: 20828b37043e0d23561486e7362da210.dir
+      size: 379258290
+      nfiles: 1
